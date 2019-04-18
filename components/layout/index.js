@@ -8,10 +8,13 @@ const Title = styled.h1`
 
 const Layout = ({
     children,
+    className,
     title,
   }) => (
   <div>
-    <Title>{title}</Title>
+    <Title className={className}>
+      {title}
+    </Title>
     {children}
   </div>
 )

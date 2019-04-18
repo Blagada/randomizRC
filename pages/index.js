@@ -23,12 +23,14 @@ const Index = (props) => (
 
   Index.getInitialProps = async function() {
     const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+    //const res = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw/values/A1%3AC10?key=AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc')
     const data = await res.json()
   
     console.log(`Show data fetched. Count: ${data.length}`)
   
     return {
       shows: data.map(entry => entry.show)
+      //values: data.map(entry => entry.value)
     }
   }
 
