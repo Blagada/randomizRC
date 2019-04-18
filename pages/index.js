@@ -4,7 +4,9 @@ import Layout from '../components/layout/'
 
 
 const Index = (props) => (
-    <Layout>
+    <Layout
+      title="RandomizRC"
+    >
         <div>
             <ul>
                 {props.shows.map(show => (

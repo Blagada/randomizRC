@@ -4,11 +4,14 @@ import { withRouter } from 'next/router'
 
 import Layout from '../components/layout/'
 
-const ViewMeeting = props => (
-  <Layout>
-    <h1>VIEW {props.show.name}</h1>
-    <p>{props.show.summary.replace(/<[/]?p>/g, '')}</p>
-    <img src={props.show.image.medium} />
+const ViewMeeting = ({
+  show,
+}) => (
+  <Layout
+    title={show.name}
+  >
+    <p>{show.summary.replace(/<[/]?p>/g, '')}</p>
+    <img src={show.image.medium} />
   </Layout>
 )
 
