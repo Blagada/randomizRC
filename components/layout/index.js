@@ -2,24 +2,27 @@ import styled from 'styled-components';
 import Link from 'next/link'
 
 import MakeBackground from '../MakeBackground/';
+import PageTitle from '../PageTitle';
 
-const Title = styled.h1`
-  color: red;
-  font-size: 50px;
-`
+
+
+const StyledLayout = styled.main`
+  background: #1a163b;
+`;
 
 const Layout = ({
     children,
     className,
     title,
   }) => (
-  <div>
-    <Title className={className}>
-      {title}
-    </Title>
+  <StyledLayout>
+    <PageTitle
+      title={title}
+      className={className}
+    />
     {children}      
     <MakeBackground />
-  </div>
+  </StyledLayout>
 )
 
 export default Layout

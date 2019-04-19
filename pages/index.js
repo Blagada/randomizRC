@@ -6,12 +6,6 @@ import { loadSpreadsheets} from '../actions'
 import Link from 'next/link'
 import HomeView from '../components/homeView'
 
-
-const Title = styled.h1`
-color: red;
-font-size: 50px;
-`
-
 class Index extends React.Component {
   static async getInitialProps (props) {
     const { store, isServer } = props.ctx
