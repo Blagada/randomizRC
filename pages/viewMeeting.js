@@ -28,4 +28,4 @@ class ViewMeeting extends React.Component {
   }
 }
 
-export default connect(state => state)(ViewMeeting)
+export default connect()(ViewMeeting)
