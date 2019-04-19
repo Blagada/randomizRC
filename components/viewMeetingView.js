@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 function ViewMeetingView ({
   spreadsheet
 }) {
-  console.log(spreadsheet);
+  
   return (
     <div>
       Vue test
@@ -15,4 +15,5 @@ function ViewMeetingView ({
   )
 }
 
-export default connect(state => state)(ViewMeetingView)
+const mapStateToProps = ({ spreadsheet }) => ({ spreadsheet })
+export default connect(mapStateToProps)(ViewMeetingView)

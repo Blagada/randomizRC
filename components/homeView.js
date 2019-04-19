@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 function HomeView ({
   spreadsheets
 }) {
-  console.log(spreadsheets);
+  
   return (
     <div>
       Vue test
@@ -21,4 +21,6 @@ function HomeView ({
   )
 }
 
-export default connect(state => state)(HomeView)
+const mapStateToProps = ({ spreadsheets }) => ({ spreadsheets })
+export default connect(mapStateToProps)(HomeView)
+
