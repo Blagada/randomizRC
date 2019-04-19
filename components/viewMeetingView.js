@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { connect } from 'react-redux'
 
 import Layout from '../components/layout';
 
