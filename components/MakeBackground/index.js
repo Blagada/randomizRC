@@ -1,29 +1,31 @@
 import styled from 'styled-components';
-import { makeBackground } from "../../lib/mixin";
 
 const StyledSpanBackground = styled.span`
     background: red;
     display: block;
     height: ${({heightValue}) => `${heightValue}px`};
-    padding-bottom: ${({paddingValue}) => `${paddingValue}px`};
+    margin-bottom: ${({paddingValue}) => `${paddingValue}px`};
 `;
 
 const MakeBackground = ({
+    className,
     nbLine,
  }) => {
-    for (var index = 2; index < nbLine; index++) {
-        console.log(index, nbLine);
-        const content = (
-            <StyledSpanBackground
-                aria-hidden="true"
-                heightValue={nbLine}
-                paddingValue={index}
-            />
-        );
-        return content;
+    const content = (nbLine, index) => (
+        <StyledSpanBackground
+            aria-hidden="true"
+            className={className}
+            heightValue={nbLine}
+            paddingValue={index}
+        />
+    );
+    let generateBackground = []
+    // Outer loop to create parent
+    for (let i = 0; i < nbLine; i++) {
+        generateBackground.push(<>{content(i, nbLine - i)}</>)
     }
-    return null;
- }
+    return generateBackground;
+};
 
 MakeBackground.defaultProps = {
     nbLine: 17,
