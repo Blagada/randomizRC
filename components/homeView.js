@@ -1,13 +1,16 @@
 import Link from 'next/link'
 import { connect } from 'react-redux'
 
+import Layout from '../components/Layout';
+
 function HomeView ({
   spreadsheets
 }) {
   
   return (
-    <div>
-      Vue test
+    <Layout
+      title="Vue test"
+    > 
       <ul>
           {spreadsheets.map(spreadsheet => (
           <li key={spreadsheet.id}>
@@ -17,7 +20,7 @@ function HomeView ({
           </li>
           ))}
       </ul>
-    </div>
+    </Layout>
   )
 }
 
