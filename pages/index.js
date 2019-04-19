@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import { loadSpreadsheets} from '../actions'
 import Link from 'next/link'
 import HomeView from '../components/homeView'
+import MakeBackground from '../components/MakeBackground';
+
+
 const Title = styled.h1`
 color: red;
 font-size: 50px;
@@ -27,6 +30,7 @@ class Index extends React.Component {
     return (
       <React.Fragment>
         <HomeView />
+        <MakeBackground />
       </React.Fragment>
     )
   }
