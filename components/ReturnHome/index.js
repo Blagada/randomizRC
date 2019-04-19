@@ -31,8 +31,8 @@ const ReturnHome = ({
   }) => (
     <StyledReturnHome>
         <Link
-            as={`/Index/`}
-            href={`/`}
+            as={`/`}
+            href={`/index`}
         >
             <a>{label}</a>
         </Link>

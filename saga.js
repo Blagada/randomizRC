@@ -20,6 +20,7 @@ function * cleanSpreadsheets(spreadsheets) {
 function * loadSpreadsheetsSaga() {
   try {
     const res = yield fetch('https://api.tvmaze.com/search/shows?q=batman', {
+      //https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw/values/A1%3AC10?key=AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc
       headers: {
         'Access-Control-Allow-Origin' : '*'
       },
