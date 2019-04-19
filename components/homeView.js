@@ -8,7 +8,15 @@ function HomeView ({
   return (
     <div>
       Vue test
-      {JSON.stringify(spreadsheets)}
+      <ul>
+          {spreadsheets.map(spreadsheet => (
+          <li key={spreadsheet.id}>
+              <Link as={`/meeting/${spreadsheet.id}`} href={`/viewMeeting?id=${spreadsheet.id}`}>
+              <a>{spreadsheet.name}</a>
+              </Link>
+          </li>
+          ))}
+      </ul>
     </div>
   )
 }

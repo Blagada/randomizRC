@@ -2,9 +2,9 @@
 
 import { all, call, delay, put, take, takeLatest } from 'redux-saga/effects'
 import es6promise from 'es6-promise'
-import 'isomorphic-unfetch'
+import fetch from 'isomorphic-unfetch'
 
-import { actionTypes, failure, loadSpreadsheetsSuccess } from './actions'
+import { actionTypes, failure, loadSpreadsheetSuccess, loadSpreadsheetsSuccess } from './actions'
 
 es6promise.polyfill()
 function * cleanSpreadsheets(spreadsheets) {
@@ -28,9 +28,23 @@ function * loadSpreadsheetsSaga() {
   }
 }
 
+function * loadSpreadsheetSaga(action) {
+  try {
+    console.log(action);
+    const res = yield fetch(`https://api.tvmaze.com/shows/${action.id}`);
+    const data = yield res.json();
+    console.log(data);
+    yield put(loadSpreadsheetSuccess(data));
+  } catch (err) {
+    console.log('AN ERROR?');
+    yield put(failure(err))
+  }
+}
+
 function * rootSaga() {
   yield all([
-    takeLatest(actionTypes.LOAD_SPREADSHEETS, loadSpreadsheetsSaga)
+    takeLatest(actionTypes.LOAD_SPREADSHEETS, loadSpreadsheetsSaga),
+    takeLatest(actionTypes.LOAD_SPREADSHEET, loadSpreadsheetSaga)
   ])
 }
 
