@@ -1,7 +1,8 @@
 import { actionTypes } from './actions'
 
 export const randomizrc = {
-  spreadsheets: null
+  spreadsheets: null,
+  spreadsheet: null,
 }
 
 function reducer (state = randomizrc, action) {
@@ -17,7 +18,11 @@ function reducer (state = randomizrc, action) {
         ...state,
         ...{ spreadsheets: action.data },
       }
-
+    case actionTypes.LOAD_SPREADSHEET_SUCCESS:
+      return {
+        ...state,
+        ...{ spreadsheet: action.data },
+      }
     default:
       return state
   }

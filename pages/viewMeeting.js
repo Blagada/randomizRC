@@ -1,15 +1,31 @@
-import Link from 'next/link'
+import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'next/router'
+import styled from 'styled-components';
 
-function ViewMeeting ({
-  id,
-}) {
-  return (
-    <div>
-      <h1>{id}</h1>
-    </div>
-  )
+import { loadSpreadsheet} from '../actions'
+import Link from 'next/link'
+import ViewMeetingView from '../components/viewMeetingView'
+
+
+class ViewMeeting extends React.Component {
+  static async getInitialProps (props) {
+    const { store, isServer, query } = props.ctx
+    if (!store.getState().spreadsheet) {
+      store.dispatch(loadSpreadsheet(query.id));
+    }
+    return { isServer }
+  }
+
+  componentDidMount () {
+  }
+
+  render () {
+    return (
+      <React.Fragment>
+        <ViewMeetingView />
+      </React.Fragment>
+    )
+  }
 }
 
 export default connect(state => state)(ViewMeeting)
