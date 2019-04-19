@@ -32,4 +32,4 @@ class Index extends React.Component {
   }
 }
 
-export default connect(state => state)(Index)
+export default connect()(Index)
