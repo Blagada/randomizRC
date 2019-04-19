@@ -1,26 +1,15 @@
-import fetch from 'isomorphic-unfetch'
-import styled from 'styled-components';
+import Link from 'next/link'
+import { connect } from 'react-redux'
 import { withRouter } from 'next/router'
 
-import Layout from '../components/layout/'
-
-const ViewMeeting = props => (
-  <Layout>
-    <h1>VIEW {props.show.name}</h1>
-    <p>{props.show.summary.replace(/<[/]?p>/g, '')}</p>
-    <img src={props.show.image.medium} />
-  </Layout>
-)
-
-
-ViewMeeting.getInitialProps = async function(context) {
-  const { id } = context.query
-  const res = await fetch(`https://api.tvmaze.com/shows/${id}`)
-  const show = await res.json()
-
-  console.log(`Fetched show: ${show.name}`)
-
-  return { show }
+function ViewMeeting ({
+  id,
+}) {
+  return (
+    <div>
+      <h1>{id}</h1>
+    </div>
+  )
 }
 
-export default ViewMeeting
+export default connect(state => state)(ViewMeeting)
