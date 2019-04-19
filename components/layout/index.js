@@ -6,10 +6,16 @@ const Title = styled.h1`
   font-size: 50px;
 `
 
-const Layout = props => (
+const Layout = ({
+    children,
+    className,
+    title,
+  }) => (
   <div>
-    <Title>randomizRC</Title>
-    {props.children}
+    <Title className={className}>
+      {title}
+    </Title>
+    {children}
   </div>
 )
 
