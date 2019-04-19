@@ -1,7 +1,9 @@
-import Link from 'next/link'
 import { connect } from 'react-redux'
+import Link from 'next/link';
 
 import Layout from '../components/layout';
+import List from '../components/List';
+import SectionTitle from '../components/SectionTitle';
 
 function HomeView ({
   spreadsheets
@@ -10,16 +12,18 @@ function HomeView ({
   return (
     <Layout
       title="RandomizRC"
+      withReturnLink={false}
     > 
-      <ul>
-          {spreadsheets.map(spreadsheet => (
-          <li key={spreadsheet.id}>
-              <Link as={`/meeting/${spreadsheet.id}`} href={`/viewMeeting?id=${spreadsheet.id}`}>
-              <a>{spreadsheet.name}</a>
-              </Link>
-          </li>
-          ))}
-      </ul>
+      {spreadsheets && (
+        <>
+          <SectionTitle
+            title={spreadsheets.length > 1 ? 'Rencontres actives' : 'Rencontre active'}
+          />
+          <List
+            spreadsheets={spreadsheets}
+          />
+        </>
+      )}
     </Layout>
   )
 }

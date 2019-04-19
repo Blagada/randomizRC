@@ -1,13 +1,24 @@
 import styled from 'styled-components';
+import { secondaryColor } from '../../assets/styles/colors';
 
 const StyleMakeBackground = styled.div`
+    margin-top: -7%;
+    pointer-events: none;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+`;
+
+const StyledSpanGradient = styled.span`
+    background: linear-gradient(to bottom, rgba(26,22,59,1) 0%,rgba(255,255,255,0) 47%);
     position: absolute;
-    bottom: 0;
+    top: 0;
+    height: 100%;
     width: 100%;
 `;
 
 const StyledSpanBackground = styled.span`
-    background: red;
+    background: ${secondaryColor};
     display: block;
     height: ${({heightValue}) => `${heightValue}px`};
     margin-bottom: ${({paddingValue}) => `${paddingValue}px`};
@@ -22,8 +33,7 @@ const MakeBackground = ({
     for (let i = 0; i < nbLine; i++) {
         generateBackground.push(
             <StyledSpanBackground
-                aria-hidden="true"
-                className={className}
+                className={`span--make-background ${className}`}
                 heightValue={i}
                 key={i}
                 paddingValue={nbLine - i}
@@ -31,13 +41,23 @@ const MakeBackground = ({
         )
     }
     return (
-        <StyleMakeBackground>
+        <StyleMakeBackground
+            aria-hidden="true"
+            className="make-background"
+        >
+            <StyledSpanGradient />
             {generateBackground}
+            <StyledSpanBackground
+                className="span--last--make-background"
+                heightValue={50}
+                paddingValue={0}
+            />
         </StyleMakeBackground>
     );
 };
 
 MakeBackground.defaultProps = {
+    className: '',
     nbLine: 17,
 };
 

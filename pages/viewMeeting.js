@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components';
 
-import { loadSpreadsheet} from '../actions'
-import Link from 'next/link'
+import { loadSpreadsheet } from '../actions'
 import ViewMeetingView from '../components/viewMeetingView'
 
 
