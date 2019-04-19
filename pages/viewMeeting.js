@@ -1,29 +1,25 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import fetch from 'isomorphic-unfetch'
+import styled from 'styled-components';
+import { withRouter } from 'next/router'
 
-import { loadSpreadsheet } from '../actions'
 import ViewMeetingView from '../components/viewMeetingView'
 
+const ViewMeeting = ({spreadsheet})  => (
+  <ViewMeetingView spreadsheet={spreadsheet}/>
+)
 
-class ViewMeeting extends React.Component {
-  static async getInitialProps (props) {
-    const { store, isServer, query } = props.ctx
-    if (!store.getState().spreadsheet) {
-      store.dispatch(loadSpreadsheet(query.id));
-    }
-    return { isServer }
-  }
 
-  componentDidMount () {
-  }
+ViewMeeting.getInitialProps = async function(context) {
+  const { id } = context.query
+  const res = await fetch(`https://api.tvmaze.com/shows/${id}`)
+  const spreadsheet = await res.json()
 
-  render () {
-    return (
-      <React.Fragment>
-        <ViewMeetingView />
-      </React.Fragment>
-    )
+  console.log(`Fetched show: ${spreadsheet.name}`)
+ 
+  
+  return {
+    spreadsheet
   }
 }
 
-export default connect()(ViewMeeting)
+export default ViewMeeting

@@ -9,6 +9,7 @@ function HomeView ({
   spreadsheets
 }) {
   
+  console.log('ALLLLO',spreadsheets );
   return (
     <Layout
       title="RandomizRC"
@@ -28,6 +29,5 @@ function HomeView ({
   )
 }
 
-const mapStateToProps = ({ spreadsheets }) => ({ spreadsheets })
-export default connect(mapStateToProps)(HomeView)
+export default HomeView;
 

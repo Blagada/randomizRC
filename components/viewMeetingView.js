@@ -19,5 +19,4 @@ function ViewMeetingView ({
   )
 }
 
-const mapStateToProps = ({ spreadsheet }) => ({ spreadsheet })
-export default connect(mapStateToProps)(ViewMeetingView)
+export default ViewMeetingView;

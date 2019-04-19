@@ -1,31 +1,26 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import styled from 'styled-components';
-
-import { loadSpreadsheets} from '../actions'
+import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
+import Layout from '../components/layout/'
 import HomeView from '../components/homeView'
 
-class Index extends React.Component {
-  static async getInitialProps (props) {
-    const { store, isServer } = props.ctx
-    if (!store.getState().spreadsheets) {
-      store.dispatch(loadSpreadsheets());
+
+const Index = ({spreadsheets}) => (
+    <HomeView spreadsheets={spreadsheets} />
+  )
+
+  Index.getInitialProps = async function() {
+    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+    const data = await res.json()
+    let cleanSpreadsheets = data.map((spreadsheet) => {
+      return({
+        id: spreadsheet.show.id,
+        name: spreadsheet.show.name,
+      });
+    });  
+    
+    return {
+      spreadsheets: cleanSpreadsheets.map(spreadsheet => spreadsheet)
     }
-    return { isServer }
   }
 
-  componentDidMount () {
-  }
-
-  render () {
-
-    return (
-      <React.Fragment>
-        <HomeView />
-      </React.Fragment>
-    )
-  }
-}
-
-export default connect()(Index)
+  export default Index
