@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from '../components/layout/'
 
 
-const Index = (props) => (
+const Index2 = (props) => (
     <Layout>
         <div>
             <ul>
@@ -19,7 +19,7 @@ const Index = (props) => (
     </Layout>
   )
 
-  Index.getInitialProps = async function() {
+  Index2.getInitialProps = async function() {
     const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
     const data = await res.json()
   
@@ -30,4 +30,4 @@ const Index = (props) => (
     }
   }
 
-  export default Index
+  export default Index2
