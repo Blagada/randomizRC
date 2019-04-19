@@ -19,12 +19,12 @@ function * cleanSpreadsheets(spreadsheets) {
 
 function * loadSpreadsheetsSaga() {
   try {
-    const res = yield fetch('https://api.tvmaze.com/search/shows?q=batman', {
-      //https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw/values/A1%3AC10?key=AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc
+    const res = yield fetch('http://api.tvmaze.com/search/shows?q=batman', {
+    //https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw/values/A1%3AC10?key=AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc
+      
       headers: {
         'Access-Control-Allow-Origin' : '*'
       },
-      credentials: 'include'
     });
     const data = yield res.json();
     const cleanData = yield cleanSpreadsheets(data);
@@ -37,12 +37,11 @@ function * loadSpreadsheetsSaga() {
 function * loadSpreadsheetSaga(action) {
   try {
     console.log('coming here?');
-    const res = yield fetch(`https://api.tvmaze.com/shows/${action.id}`, {
+    const res = yield fetch(`http://api.tvmaze.com/shows/${action.id}`, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin' : '*'
       },
-      credentials: 'include'
     });
     console.log('Treid to fetch?');
     const data = yield res.json();
