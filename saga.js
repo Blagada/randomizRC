@@ -20,6 +20,9 @@ function * cleanSpreadsheets(spreadsheets) {
 function * loadSpreadsheetsSaga() {
   try {
     const res = yield fetch('https://api.tvmaze.com/search/shows?q=batman', {
+      headers: {
+        'Access-Control-Allow-Origin' : '*'
+      },
       credentials: 'include'
     });
     const data = yield res.json();
@@ -34,6 +37,10 @@ function * loadSpreadsheetSaga(action) {
   try {
     console.log('coming here?');
     const res = yield fetch(`https://api.tvmaze.com/shows/${action.id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : '*'
+      },
       credentials: 'include'
     });
     console.log('Treid to fetch?');
