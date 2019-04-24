@@ -9,12 +9,15 @@ const Index = ({spreadsheets}) => (
   )
 
   Index.getInitialProps = async function() {
-    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+    const API = 'https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw?key=AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc'
+
+    const res = await fetch(API)
     const data = await res.json()
-    let cleanSpreadsheets = data.map((spreadsheet) => {
+
+    let cleanSpreadsheets = data.sheets.map((spreadsheet) => {
       return({
-        id: spreadsheet.show.id,
-        name: spreadsheet.show.name,
+        id: spreadsheet.properties.sheetId,
+        name: spreadsheet.properties.title,
       });
     });  
     
