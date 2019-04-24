@@ -51,9 +51,9 @@ const Layout = ({
       />
     </header>
     <main>
-      {children}  
+      {children}
     </main>
-    <footer>    
+    <footer>
       
     </footer>
     <MakeBackground />
