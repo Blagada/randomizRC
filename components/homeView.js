@@ -16,6 +16,8 @@ function HomeView ({
       withReturnLink={false}
     > 
       <ActionLink
+        link={`/creer-rencontre/`}
+        path={`/createMeeting`}
         label="Créer une rencontre"
       />
       {spreadsheets && (

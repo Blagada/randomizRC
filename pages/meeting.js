@@ -2,14 +2,14 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components';
 import { withRouter } from 'next/router'
 
-import ViewMeetingView from '../components/viewMeetingView'
+import MeetingView from '../components/meetingView'
 
-const ViewMeeting = ({spreadsheet})  => (
-  <ViewMeetingView spreadsheet={spreadsheet}/>
+const Meeting = ({spreadsheet})  => (
+  <MeetingView spreadsheet={spreadsheet}/>
 )
 
 
-ViewMeeting.getInitialProps = async function(context) {
+Meeting.getInitialProps = async function(context) {
   const { id } = context.query
   const res = await fetch(`https://api.tvmaze.com/shows/${id}`)
   const spreadsheet = await res.json()
@@ -22,4 +22,4 @@ ViewMeeting.getInitialProps = async function(context) {
   }
 }
 
-export default ViewMeeting
+export default Meeting

@@ -1,14 +1,14 @@
 import Link from 'next/link'
 
-import Layout from '../components/layout';
+import Layout from './layout';
 
-function ViewMeetingView ({
+function MeetingView ({
   spreadsheet
 }) {
   
   return (
     <Layout
-      title="Vue test"
+      title="Rencontre randomizer"
     >
       {console.log(spreadsheet)}
       <ul>
@@ -18,4 +18,4 @@ function ViewMeetingView ({
   )
 }
 
-export default ViewMeetingView;
+export default MeetingView;

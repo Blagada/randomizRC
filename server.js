@@ -11,7 +11,13 @@ app
     const server = express()
 
     server.get('/meeting/:id', (req, res) => {
-      const actualPage = '/viewMeeting'
+      const actualPage = '/meeting'
+      const queryParams = { id: req.params.id }
+      app.render(req, res, actualPage, queryParams)
+    })
+
+    server.get('/creer-rencontre/:id', (req, res) => {
+      const actualPage = '/createMeeting'
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)
     })

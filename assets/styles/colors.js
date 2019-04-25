@@ -1,6 +1,7 @@
 export const backgroundColor = '#1a163b';
 export const txtForLightBg = '#000';
 export const txtForDarkBg = '#fff';
+export const boxShadowColor = "#888";
 
 export const secondaryColorArray = [
     '#ed1b24',

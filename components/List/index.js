@@ -11,7 +11,6 @@ const StyledList = styled.ul`
 
     a {
         color: ${txtForDarkBg};
-        text-decoration: none;
     }
 
     a:hover,
@@ -33,13 +32,14 @@ const List = ({
     <StyledList
         className={className}
     >
-        {spreadsheets.slice(0, maxItem).map((spreadsheet, i) => (
+        { /* .slice(0, maxItem) */ }
+        {spreadsheets.map((spreadsheet, i) => (
             <li
                 key={spreadsheet.id}
             >
                 <Link
                     as={`/meeting/${spreadsheet.id}`}
-                    href={`/viewMeeting?id=${spreadsheet.id}`}
+                    href={`/meeting?id=${spreadsheet.id}`}
                 >
                     <a>{spreadsheet.name}</a>
                 </Link>
