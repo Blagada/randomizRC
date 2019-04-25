@@ -16,8 +16,18 @@ const Index = ({spreadsheets}) => (
         id: spreadsheet.show.id,
         name: spreadsheet.show.name,
       });
-    });  
+    });
     
+    /*const res = await fetch('https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw?key=AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc')
+    const data = await res.json()
+    
+    let cleanSpreadsheets = data.map((spreadsheet) => {
+      return({
+        id: spreadsheet.sheets.properties.sheetId,
+        name: spreadsheet.sheets.properties.title,
+      });
+    });*/
+
     return {
       spreadsheets: cleanSpreadsheets.map(spreadsheet => spreadsheet)
     }

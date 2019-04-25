@@ -27,19 +27,29 @@ const StyledList = styled.ul`
 
 const List = ({
     className,
+    maxItem,
     spreadsheets,
   }) => (
     <StyledList
         className={className}
     >
-        {spreadsheets.map(spreadsheet => (
-            <li key={spreadsheet.id}>
-                <Link as={`/meeting/${spreadsheet.id}`} href={`/viewMeeting?id=${spreadsheet.id}`}>
+        {spreadsheets.slice(0, maxItem).map((spreadsheet, i) => (
+            <li
+                key={spreadsheet.id}
+            >
+                <Link
+                    as={`/meeting/${spreadsheet.id}`}
+                    href={`/viewMeeting?id=${spreadsheet.id}`}
+                >
                     <a>{spreadsheet.name}</a>
                 </Link>
             </li>
         ))}
     </StyledList>
   );
+
+List.defaultProps = {
+    maxItem: 5,
+}
 
 export default List
