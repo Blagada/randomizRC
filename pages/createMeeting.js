@@ -15,7 +15,7 @@ Meeting.getInitialProps = async function(context) {
     const res = await fetch(API)
     const data = await res.json()
 
-    console.log(`Fetched show: ${data.name}`)
+    console.log(`Fetched show: ${data}`)
  
     return {}
 }

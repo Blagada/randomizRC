@@ -28,25 +28,30 @@ const List = ({
     className,
     maxItem,
     spreadsheets,
-  }) => (
-    <StyledList
-        className={className}
-    >
-        { /* .slice(0, maxItem) */ }
-        {spreadsheets.map((spreadsheet, i) => (
-            <li
-                key={spreadsheet.id}
-            >
-                <Link
-                    as={`/meeting/${spreadsheet.id}`}
-                    href={`/meeting?id=${spreadsheet.id}`}
+  }) => {
+    if (!spreadsheets) {
+        return "Aucun liste n'est disponible pour le moment";
+    }
+    return (
+        <StyledList
+            className={className}
+        >
+            { /* .slice(0, maxItem) */ }
+            {spreadsheets.map((spreadsheet, i) => (
+                <li
+                    key={spreadsheet.id}
                 >
-                    <a>{spreadsheet.name}</a>
-                </Link>
-            </li>
-        ))}
-    </StyledList>
-  );
+                    <Link
+                        as={`/meeting/${spreadsheet.id}`}
+                        href={`/meeting?id=${spreadsheet.id}`}
+                    >
+                        <a>{spreadsheet.name}</a>
+                    </Link>
+                </li>
+            ))}
+        </StyledList>
+    )
+};
 
 List.defaultProps = {
     maxItem: 5,

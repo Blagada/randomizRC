@@ -33,7 +33,7 @@ const ActionLink = ({
     path,
   }) => (
     <StyledActionLink
-        className={className || className}
+        className={`action-link ${className ? className : ''}`}
     >
         <Link
             as={`${link}`}
