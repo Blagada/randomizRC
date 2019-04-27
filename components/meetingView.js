@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from './layout';
 
 function MeetingView ({
-  meetingArr,
+  meeting,
   meetingName,
 }) {
   
@@ -11,9 +11,9 @@ function MeetingView ({
     <Layout
       title={meetingName}
     >
-      {console.log(meetingArr)}
+      {console.log(meeting)}
       <ul>
-         {meetingArr}
+         {meeting[0].name}
       </ul>
     </Layout>
   )
