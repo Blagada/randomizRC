@@ -4,8 +4,8 @@ import { withRouter } from 'next/router'
 
 import MeetingView from '../components/meetingView'
 
-const Meeting = ({meetingArr})  => (
-  <MeetingView meetingArr={meetingArr}/>
+const Meeting = ({meetingArr, meetingName})  => (
+  <MeetingView meetingArr={meetingArr} meetingName={meetingName} />
 )
 
 Meeting.getInitialProps = async function(context) {
@@ -36,8 +36,10 @@ Meeting.getInitialProps = async function(context) {
     });
   });
   console.log(meetingArr);
+  console.log(currSheet.name);
   return {
     meeting: meetingArr,
+    meetingName: currSheet.name,
   }
 }
 

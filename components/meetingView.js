@@ -3,12 +3,13 @@ import Link from 'next/link'
 import Layout from './layout';
 
 function MeetingView ({
-  meetingArr
+  meetingArr,
+  meetingName,
 }) {
   
   return (
     <Layout
-      title="Rencontre randomizer"
+      title={meetingName}
     >
       {console.log(meetingArr)}
       <ul>
