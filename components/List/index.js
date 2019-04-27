@@ -11,7 +11,7 @@ const StyledList = styled.ul`
     color: ${txtForDarkBg};
     margin: 0;
     padding: 0 0 0 20px;
-    ${({ isEmployes }) => (isEmployes ? 'list-style: none;' : '')}
+    ${({ isEditable }) => (isEditable ? 'list-style: none;' : '')}
 
     a {
         color: ${txtForDarkBg};
@@ -42,7 +42,7 @@ const List = ({
     return (
         <StyledList
             className={className}
-            isEmployes={isEmployes}
+            isEditable={isEditable}
         >
             { /* .slice(0, maxItem) */ }
             {spreadsheets.map((spreadsheet, i) => (

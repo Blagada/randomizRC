@@ -8,10 +8,7 @@ import { txtForDarkBg, secondaryColor } from '../../assets/styles/colors';
 
 
 const StyledReturnHome = styled.div`
-  
-  font-family: 'Knewave', cursive;
-  font-style: italic;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1.3;
   text-transform: uppercase;
 
