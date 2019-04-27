@@ -3,16 +3,16 @@ import Link from 'next/link'
 import Layout from './layout';
 
 function MeetingView ({
-  spreadsheet
+  meetingArr
 }) {
   
   return (
     <Layout
       title="Rencontre randomizer"
     >
-      {console.log(spreadsheet)}
+      {console.log(meetingArr)}
       <ul>
-         {spreadsheet.name}
+         {meetingArr}
       </ul>
     </Layout>
   )
