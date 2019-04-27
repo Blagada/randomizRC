@@ -45,7 +45,7 @@ const List = ({
                     key={spreadsheet.id}
                 >
                     {isEmployes ? (
-                        <EmployesItem />
+                        <>{spreadsheet.name}, {spreadsheet.location}</>
                     ) : (
                         <Link
                             as={`/meeting/${spreadsheet.id}`}

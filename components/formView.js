@@ -6,7 +6,7 @@ import List from '../components/List';
 import ActionLink from './ActionLink';
 import EmployesItem from './EmployesItem';
 
-const StyledForm = styled.div`
+const StyledForm = styled.form`
   input[type=text],
   input[type=number] {
     display: block;

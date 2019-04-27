@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import Layout from './layout';
+import List from './List';
 
 function MeetingView ({
   meeting,
@@ -11,10 +12,10 @@ function MeetingView ({
     <Layout
       title={meetingName}
     >
-      {console.log(meeting)}
-      <ul>
-         {meeting[0].name}
-      </ul>
+      <List
+        spreadsheets={meeting}
+        isEmployes
+      />
     </Layout>
   )
 }

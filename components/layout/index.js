@@ -27,11 +27,6 @@ const StyledLayout = styled.div`
     position: relative;
     z-index: 10;
   }
-
-  .make-background {
-    box-sizing: border-box;
-    padding: 20px;
-  }
 `;
 
 const Layout = ({
