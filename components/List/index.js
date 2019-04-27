@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import EmployesItem from '../../components/EmployesItem';
+
 import { txtForDarkBg, secondaryColor } from '../../assets/styles/colors';
 
 
@@ -27,6 +29,7 @@ const StyledList = styled.ul`
 
 const List = ({
     className,
+    isEditable,
     isEmployes,
     maxItem,
     spreadsheets,
@@ -34,6 +37,12 @@ const List = ({
     if (!spreadsheets) {
         return "Aucune liste n'est disponible pour le moment";
     }
+
+    const getIsActive = (active) => {
+        var isTrueSet = (active.toLowerCase() === 'true');
+        return isTrueSet
+    }
+    console.log(spreadsheets);
     return (
         <StyledList
             className={className}
@@ -43,9 +52,20 @@ const List = ({
             {spreadsheets.map((spreadsheet, i) => (
                 <li
                     key={spreadsheet.id}
-                >
+                >   {console.log(spreadsheet.location)}
                     {isEmployes ? (
-                        <>{spreadsheet.name}, {spreadsheet.location}</>
+                        <>
+                            {isEditable ? (
+                                <EmployesItem
+                                    id={spreadsheet.id}
+                                    isActive={getIsActive(spreadsheet.presence)}
+                                    title={spreadsheet.name}
+                                    employeLocation={spreadsheet.location}
+                                />
+                            ) : (
+                                spreadsheet.name, spreadsheet.location
+                            )}
+                        </>
                     ) : (
                         <Link
                             as={`/meeting/${spreadsheet.id}`}

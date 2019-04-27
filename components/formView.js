@@ -46,7 +46,7 @@ const StyledDetails = styled.details`
 `;
 
 function FormView ({
-
+  employes,
 }) {
   
   return (
@@ -94,8 +94,11 @@ function FormView ({
         <StyledHr />
         <StyledDetails>
           <summary>Listes des employés invités</summary>
-          <List />
-          <EmployesItem />
+          <List
+            spreadsheets={employes}
+            isEmployes
+            isEditable
+          />
         </StyledDetails>
         <ActionLink
           path="/meeting"

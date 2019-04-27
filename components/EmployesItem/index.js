@@ -20,6 +20,7 @@ const StyledEmployesName = styled.span`
 
 const EmployesItem = ({
   className,
+  employeLocation,
   id,
   isActive,
   title,
@@ -29,7 +30,7 @@ const EmployesItem = ({
       htmlFor={id}
   >
     <input
-        {...isActive && { 'checked': 'checked' }}
+        {...isActive && { 'defaultChecked': true }}
         id={id}
         type="checkbox"
         value={id}
@@ -37,7 +38,12 @@ const EmployesItem = ({
     <StyledEmployesName>{title}</StyledEmployesName>
     <select>
       {locations.map((location, i) => (
-        <option value={i} title={location.name} key={`${location.abbrName}${i}`}>
+        <option
+          value={location.id}
+          title={location.name}
+          key={`${location.abbrName}${i}`}
+          {... employeLocation.toUpperCase() === location.id && {'selected' : 'selected'}}
+        >
          {location.abbrName}
         </option>
       ))}
@@ -46,9 +52,7 @@ const EmployesItem = ({
 );
 
 EmployesItem.defaultProps = {
-  id: 'yo',
   isActive: false,
-  title: 'Yo',
 };
 
 export default EmployesItem
