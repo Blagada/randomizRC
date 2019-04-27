@@ -4,36 +4,44 @@ import Link from 'next/link';
 import Layout from '../components/layout';
 import List from '../components/List';
 import ActionLink from './ActionLink';
+import EmployesItem from './EmployesItem';
 
 const StyledForm = styled.div`
   input[type=text],
   input[type=number] {
     display: block;
     margin-top: 5px;
+    padding: 4px;
   }
 
   input[type=radio] {
     margin: 0 5px;
   }
 
-  label {
-    display: block;
-  }
-
-  fieldset {
-    border-style: solid;
-    border-width: 1px;
-  }
-
-  hr {
-    border-bottom: 0;
-    border-style: solid;
-    display: block;
-    margin: 20px 0;
-  }
-
   .action-link {
     margin-top: 20px;
+  }
+`;
+
+const StyledLabel = styled.label`
+  display: block;
+`;
+
+const StyledHr = styled.hr`
+  border-bottom: 0;
+  border-style: solid;
+  display: block;
+  margin: 20px 0;
+`;
+
+const StyledFieldset = styled.fieldset`
+  border-style: solid;
+  border-width: 1px;
+`;
+
+const StyledDetails = styled.details`
+  summary {
+    cursor: pointer;
   }
 `;
 
@@ -47,47 +55,48 @@ function FormView ({
     >
       <StyledForm>
         {/* Nom */}
-        <label
+        <StyledLabel
           htmlFor="meetingName"
         >
           Nom de la rencontre
           <input type="text" id="meetingName" placeholder="Ex: Rencontre 1" />
-        </label>
-        <hr />
+        </StyledLabel>
+        <StyledHr />
         {/* radio type de random */}
-        <fieldset>
+        <StyledFieldset>
           <legend>Type de rencontre aléatoire</legend>
-          <label
+          <StyledLabel
             htmlFor="randomType1"
           >
             <input type="radio" id="randomType1" name="randomType" value="0" />
             La totale
-          </label>
-          <label
+          </StyledLabel>
+          <StyledLabel
             htmlFor="randomType2"
           >
             <input type="radio" id="randomType2" name="randomType" value="1" />
             Au moins un par localisation
-          </label>
-          <label
+          </StyledLabel>
+          <StyledLabel
             htmlFor="randomType3"
           >
             <input type="radio" id="randomType3" name="randomType" value="2" />
             Par localisation
-          </label>
-        </fieldset>
-        <hr />
-        <label
+          </StyledLabel>
+        </StyledFieldset>
+        <StyledHr />
+        <StyledLabel
           htmlFor="numberMembersPerTeam"
         >
           Nombre de membres par équipe
-          <input type="number" id="numberMembersPerTeam" placeholder="Ex: 4" />
-        </label>
-        <hr />
-        <details>
+          <input type="number" id="numberMembersPerTeam" min="1" placeholder="Ex: 4" />
+        </StyledLabel>
+        <StyledHr />
+        <StyledDetails>
           <summary>Listes des employés invités</summary>
           <List />
-        </details>
+          <EmployesItem />
+        </StyledDetails>
         <ActionLink
           path="/meeting"
           link="/meeting"
