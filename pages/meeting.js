@@ -4,8 +4,8 @@ import { withRouter } from 'next/router'
 
 import MeetingView from '../components/meetingView'
 
-const Meeting = ({meetingArr, meetingName})  => (
-  <MeetingView meetingArr={meetingArr} meetingName={meetingName} />
+const Meeting = ({meeting, meetingName})  => (
+  <MeetingView meeting={meeting} meetingName={meetingName} />
 )
 
 Meeting.getInitialProps = async function(context) {
