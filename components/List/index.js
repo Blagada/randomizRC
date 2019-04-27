@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import EmployesItem from '../../components/EmployesItem';
 
+import { getIsActive } from '../../assets/helpers';
 import { txtForDarkBg, secondaryColor } from '../../assets/styles/colors';
 
 
@@ -37,12 +38,7 @@ const List = ({
     if (!spreadsheets) {
         return "Aucune liste n'est disponible pour le moment";
     }
-
-    const getIsActive = (active) => {
-        var isTrueSet = (active.toLowerCase() === 'true');
-        return isTrueSet
-    }
-    console.log(spreadsheets);
+    console.log(`list`, spreadsheets)
     return (
         <StyledList
             className={className}
@@ -52,7 +48,7 @@ const List = ({
             {spreadsheets.map((spreadsheet, i) => (
                 <li
                     key={spreadsheet.id}
-                >   {console.log(spreadsheet.location)}
+                >
                     {isEmployes ? (
                         <>
                             {isEditable ? (
@@ -63,7 +59,7 @@ const List = ({
                                     employeLocation={spreadsheet.location}
                                 />
                             ) : (
-                                spreadsheet.name, spreadsheet.location
+                                <p>{spreadsheet.name}, {spreadsheet.location}</p>
                             )}
                         </>
                     ) : (

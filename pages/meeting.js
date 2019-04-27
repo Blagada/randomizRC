@@ -2,11 +2,20 @@ import fetch from 'isomorphic-unfetch'
 import styled from 'styled-components';
 import { withRouter } from 'next/router'
 
+import { getIsActive } from '../assets/helpers';
 import MeetingView from '../components/meetingView'
 
-const Meeting = ({meeting, meetingName})  => (
-  <MeetingView meeting={meeting} meetingName={meetingName} />
-)
+const Meeting = ({meeting, meetingName, meetingId})  => {
+  
+  const filterEmployes = meeting.filter(employe => getIsActive(employe.presence) === true)
+
+  return (
+    <MeetingView
+      meeting={meetingId !== 0 ? filterEmployes : meeting}
+      meetingName={meetingName}
+    />
+  )
+}
 
 Meeting.getInitialProps = async function(context) {
   const { id } = context.query
@@ -35,11 +44,11 @@ Meeting.getInitialProps = async function(context) {
       team: user[3], 
     });
   });
-  console.log(meetingArr);
-  console.log(currSheet.name);
+
   return {
     meeting: meetingArr,
     meetingName: currSheet.name,
+    meetingId: currSheet.id,
   }
 }
 

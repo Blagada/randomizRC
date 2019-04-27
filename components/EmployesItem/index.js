@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { secondaryColor } from '../../assets/styles/colors';
-import { locations } from '../../assets/constants';
+import { locations } from '../../assets/helpers';
 
 const StyledEmployesItem = styled.label`
   border-bottom: 1px solid ${secondaryColor};

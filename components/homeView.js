@@ -9,7 +9,6 @@ function HomeView ({
   spreadsheets
 }) {
   
-  console.log('ALLLLO',spreadsheets );
   return (
     <Layout
       title="RandomizRC"

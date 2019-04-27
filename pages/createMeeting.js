@@ -39,7 +39,6 @@ CreateMeeting.getInitialProps = async function(context) {
       team: user[3], 
     });
   });
-  console.log(`list`,employesList)
   return {
     employes: employesList,
   }
