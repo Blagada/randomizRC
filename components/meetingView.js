@@ -15,22 +15,24 @@ function MeetingView ({
   }
   
   const grouped = groupBy(meeting, team => team.team);
-  
   return (
     <Layout
       title={meetingName}
     >
     
-    {grouped.forEach(function(value) {
-      <>
+    {Array.from(grouped).map((value, i) => {
+      console.log(value);
+      return (
+      <div key={`team${i}`}>
         <SectionTitle
-          title={value.team}
+          title="Équipe"
         />
         <List
           isEmployes
           spreadsheets={value}
         />
-      </>
+      </div>
+      );
     })}
     </Layout>
   )
