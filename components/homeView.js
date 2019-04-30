@@ -25,7 +25,7 @@ function HomeView ({
             title={spreadsheets.length > 1 ? 'Rencontres actives' : 'Rencontre active'}
           />
           <List
-            spreadsheets={spreadsheets}
+            items={spreadsheets}
           />
         </>
       )}

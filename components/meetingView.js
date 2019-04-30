@@ -4,7 +4,7 @@ import Layout from './layout';
 import List from './List';
 import SectionTitle from './SectionTitle'
 
-import { groupBy } from '../assets/helpers';
+import { groupBy, getGroupedArray } from '../assets/helpers';
 
 function MeetingView ({
   meeting,
@@ -14,22 +14,22 @@ function MeetingView ({
     return "La rencontre que vous demandez n'est plus disponible"
   }
   
-  const grouped = groupBy(meeting, team => team.team);
+  const teams = getGroupedArray(meeting, team => team.team);
+
   return (
     <Layout
       title={meetingName}
     >
-    
-    {Array.from(grouped).map((value, i) => {
-      console.log(value);
+
+    {teams.map((team, i) => {
       return (
       <div key={`team${i}`}>
         <SectionTitle
-          title="Équipe"
+          title={`Équipe ${team.name}`}
         />
         <List
           isEmployes
-          spreadsheets={value}
+          items={team.members}
         />
       </div>
       );

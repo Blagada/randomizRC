@@ -35,3 +35,16 @@ export function groupBy(list, keyGetter) {
   });
   return map;
 }
+
+export function getGroupedArray(list, keyGetter) {
+  const grouped = groupBy(list, keyGetter)
+  let arrObj = [];
+  grouped.forEach((value, key, map) => {
+    let obj = {
+      "name": key,
+      "members": value,
+    }
+    arrObj.push(obj); 
+  });
+  return(arrObj);
+}

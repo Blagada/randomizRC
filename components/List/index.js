@@ -33,41 +33,41 @@ const List = ({
     isEditable,
     isEmployes,
     maxItem,
-    spreadsheets,
+    items,
   }) => {
-    if (!spreadsheets) {
+    if (!items) {
         return "Aucune liste n'est disponible pour le moment";
     }
-    console.log(`list`, spreadsheets)
+
     return (
         <StyledList
             className={className}
             isEditable={isEditable}
         >
             { /* .slice(0, maxItem) */ }
-            {spreadsheets.map((spreadsheet, i) => (
+            {items.map((item, i) => (
                 <li
-                    key={spreadsheet.id}
+                    key={item.id}
                 >
                     {isEmployes ? (
                         <>
                             {isEditable ? (
                                 <EmployesItem
-                                    id={spreadsheet.id}
-                                    isActive={getIsActive(spreadsheet.presence)}
-                                    title={spreadsheet.name}
-                                    employeLocation={spreadsheet.location}
+                                    id={item.id}
+                                    isActive={getIsActive(item.presence)}
+                                    title={item.name}
+                                    employeLocation={item.location}
                                 />
                             ) : (
-                                <p>{spreadsheet.name}, {spreadsheet.location}</p>
+                                <p>{item.name}, {item.location}</p>
                             )}
                         </>
                     ) : (
                         <Link
-                            as={`/meeting/${spreadsheet.id}`}
-                            href={`/meeting?id=${spreadsheet.id}`}
+                            as={`/meeting/${item.id}`}
+                            href={`/meeting?id=${item.id}`}
                         >
-                            <a>{spreadsheet.name}</a>
+                            <a>{item.name}</a>
                         </Link>
                     )}                    
                 </li>
