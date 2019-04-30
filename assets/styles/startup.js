@@ -1,4 +1,5 @@
 import { backgroundColor } from './colors'
+import { textFontFamily } from './fonts'
 
 export default () => (
     <div>
@@ -8,7 +9,7 @@ export default () => (
         body {
             background: ${backgroundColor};
             color: #fff;
-            font-family: verdana, arial, sans-serif;
+            font-family: ${textFontFamily};
             font-size: 14px;
             line-height: 1.5;
             padding: 0;

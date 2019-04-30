@@ -1,30 +1,7 @@
-import styled from 'styled-components';
+
 import Link from 'next/link';
 
-import {
-    boxShadowColor,
-    secondaryColor,
-    txtForLightBg,
-} from '../../assets/styles/colors';
-
-const StyledActionLink = styled.div`
-    a {
-        background: ${secondaryColor};
-        border-radius: 1px;
-        box-shadow: 4px 4px ${boxShadowColor};
-        color: ${txtForLightBg};
-        display: inline-block;
-        font-weight: 600;
-        padding: 5px;
-        text-decoration: none;
-    }
-
-    a:hover,
-    a:focus {
-        box-shadow: 2px 2px ${boxShadowColor};
-        transform: translate(2px, 2px);
-    }
-`;
+import { StyledActionTag } from '../../assets/styles/actionTag';
 
 const ActionLink = ({
     className,
@@ -32,7 +9,7 @@ const ActionLink = ({
     link,
     path,
   }) => (
-    <StyledActionLink
+    <StyledActionTag
         className={`action-link ${className ? className : ''}`}
     >
         <Link
@@ -41,7 +18,7 @@ const ActionLink = ({
         >
             <a>{label}</a>
         </Link>
-    </StyledActionLink>
+    </StyledActionTag>
   );
 
 ActionLink.defaultProps = {
