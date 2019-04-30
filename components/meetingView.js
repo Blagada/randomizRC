@@ -7,11 +7,12 @@ import SectionTitle from './SectionTitle'
 import { groupBy, getGroupedArray } from '../assets/helpers';
 
 function MeetingView ({
+  isListEmployes,
   meeting,
   meetingName,
 }) {
   if (!meeting) {
-    return "La rencontre que vous demandez n'est plus disponible"
+    return "La rencontre que vous demandez n'est pas disponible"
   }
   
   const teams = getGroupedArray(meeting, team => team.team);
@@ -24,9 +25,11 @@ function MeetingView ({
     {teams.map((team, i) => {
       return (
       <div key={`team${i}`}>
-        <SectionTitle
-          title={`Équipe ${team.name}`}
-        />
+        {!isListEmployes && (
+          <SectionTitle
+            title={`Équipe ${team.name}`}
+          />
+        )}
         <List
           isEmployes
           items={team.members}

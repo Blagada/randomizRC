@@ -8,11 +8,13 @@ import MeetingView from '../components/meetingView'
 const Meeting = ({meeting, meetingName, meetingId})  => {
   
   const filterEmployes = meeting.filter(employe => getIsActive(employe.presence) === true)
-
+  const cleanMeeting = meeting.filter(employe => Number(employe.team) === 0)
+  
   return (
     <MeetingView
-      meeting={meetingId !== 0 ? filterEmployes : meeting}
+      meeting={meetingId !== 0 ? filterEmployes : cleanMeeting}
       meetingName={meetingName}
+      isListEmployes={meetingId === 0 && true}
     />
   )
 }

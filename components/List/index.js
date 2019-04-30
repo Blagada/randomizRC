@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import EmployesItem from '../../components/EmployesItem';
 
+import { locations } from '../../assets/helpers';
 import { getIsActive } from '../../assets/helpers';
 import { txtForDarkBg, secondaryColor } from '../../assets/styles/colors';
 
@@ -23,6 +24,20 @@ const StyledList = styled.ul`
     }
 `;
 
+const StyledLocationName = styled.span`
+    display: inline-block;
+    margin: 0 0 0 5px;
+`;
+
+
+const getLocationName = (item) => (
+    <>
+        {locations.map((location) => {
+            if (item.toUpperCase() === location.id)
+            return location.name
+        })}
+    </>
+)
 {/* TODO : Permet d'afficher des listes
         - Soit de rencontre
         - Soit d'employé
@@ -59,7 +74,10 @@ const List = ({
                                     employeLocation={item.location}
                                 />
                             ) : (
-                                <p>{item.name}, {item.location}</p>
+                                <>
+                                    <span>{item.name},</span>
+                                    <StyledLocationName>{getLocationName(item.location)}</StyledLocationName>
+                                </>
                             )}
                         </>
                     ) : (
