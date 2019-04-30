@@ -16,6 +16,10 @@ const StyledTitle = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /**/
+
+  @media (min-width: 620px) {
+    font-size: 95px;
+  }
 `;
 
 const PageTitle = ({

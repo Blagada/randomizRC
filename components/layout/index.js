@@ -10,12 +10,13 @@ import ReturnHome from '../ReturnHome';
 import { backgroundColor } from '../../assets/styles/colors';
 
 const StyledLayout = styled.div`
-  background: ${backgroundColor};
   display: flex;
   flex-direction: column;
   height: 100%; 
-  min-height: 100vh;
   justify-content: flex-start;
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 650px;
 
   header {
     padding: 20px;
@@ -35,6 +36,7 @@ const Layout = ({
     title,
     withReturnLink,
   }) => (
+    <>
   <StyledLayout>
     <header>
       {withReturnLink && (
@@ -54,6 +56,7 @@ const Layout = ({
     <MakeBackground />
     <GlobalStyle />
   </StyledLayout>
+  </>
 )
 
 Layout.defaultProps = {
