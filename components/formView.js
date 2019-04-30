@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 
+import { StyledActionTag } from '../assets/styles/actionTag';
+
 import Layout from '../components/layout';
 import List from '../components/List';
 import ActionLink from './ActionLink';
@@ -18,7 +20,7 @@ const StyledForm = styled.form`
     margin: 0 5px;
   }
 
-  .action-link {
+  .submit-action {
     margin-top: 20px;
   }
 `;
@@ -205,7 +207,11 @@ class FormView extends React.Component{
               isEditable
             />
           </StyledDetails>
-          <input type="submit" value="Créer la rencontre" />
+          <StyledActionTag
+            className="submit-action"
+          >
+            <input type="submit" value="Créer la rencontre" />
+          </StyledActionTag>
         </StyledForm>
       </Layout>
     )

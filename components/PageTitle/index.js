@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { txtForDarkBg, secondaryColor } from '../../assets/styles/colors';
 
+import { txtForDarkBg, secondaryColor } from '../../assets/styles/colors';
+import { titleFontFamily } from '../../assets/styles/fonts';
 
 const StyledTitle = styled.h1`
   color: ${txtForDarkBg};
-  font-family: 'Knewave', cursive;
+  font-family: ${titleFontFamily};
   font-style: italic;
   font-size: 15.5vw;
   line-height: 1.3;
@@ -16,6 +17,10 @@ const StyledTitle = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /**/
+
+  @media (min-width: 620px) {
+    font-size: 95px;
+  }
 `;
 
 const PageTitle = ({
