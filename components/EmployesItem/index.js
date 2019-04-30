@@ -31,12 +31,20 @@ const EmployesItem = ({
   >
     <input
         {...isActive && { 'defaultChecked': true }}
-        id={id}
+        id={`checkboxMember${id}`}
+        name={`checkboxMember${id}`}
         type="checkbox"
         value={id}
     />
-    <StyledEmployesName>{title}</StyledEmployesName>
-    <select>
+    <input 
+      id={`textMember${id}`}
+      name={`textMember${id}`}
+      type="text"
+      value={title}
+      required
+    />
+
+    <select name={`selectMember${id}`}>
       {locations.map((location, i) => (
         <option
           value={location.id}

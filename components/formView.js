@@ -58,8 +58,95 @@ class FormView extends React.Component{
 
   handleSubmit(event) {
     console.log('SUBMITTING FORMS LIKE ITS 1995');
-    event.preventDefault();
-    
+    const data = new FormData(event.target);
+    let usersData = [];
+    let randomType = "";
+    let meetingName = "";
+    let numberMembersPerTeam = 0;
+
+    for (var [key, value] of data.entries()) { 
+      if (key.includes('checkboxMember')){
+        usersData.push({"id": value, "name": "", "location": ""})
+      }
+
+      if (key.includes('selectMember')) {
+        const userNumericId = key.replace( /^\D+/g, '');
+        const index = usersData.findIndex(user => user.id === userNumericId);
+        if(index >= 0) {
+          usersData[index] = {
+            'id': userNumericId,
+            'location': value,
+            'name': usersData[index].name,
+          }
+        }
+      }
+          
+      if (key.includes('textMember')) {
+        const userNumericId = key.replace( /^\D+/g, '');
+        const index = usersData.findIndex(user => user.id === userNumericId);
+        if(index >= 0) {
+          usersData[index] = {
+            'id': userNumericId,
+            'location': usersData[index].location,
+            'name': value,
+          }
+        }
+      }
+      
+      if (key.includes('meetingName')) {
+        meetingName = value;
+      }
+
+      if (key.includes('randomType')) {
+        randomType = value;
+      }
+
+      if (key.includes('numberMembersPerTeam')) {
+        numberMembersPerTeam = value;
+      }
+      
+    }
+    const userQty = usersData.length;
+    const numberOfTeams = Math.floor(userQty / numberMembersPerTeam);
+    const usersWithoutTeam = Math.abs((numberOfTeams * numberMembersPerTeam) - userQty);
+    console.log('numberOfTeams', numberOfTeams);
+    console.log('userQty', userQty);
+    console.log('usersWithoutTeam', usersWithoutTeam);
+    let teamDistribution = [];
+    let currTeamIndex = 1;
+    for (let i; i < userQty; i++) {
+      teamDistribution.push(currTeamIndex);
+      currTeamIndex++; 
+      if (currTeamIndex > numberOfTeams) {
+        currTeamIndex = 1;
+      }
+    }  
+    console.log(teamDistribution);
+    let randomizedUsers = [];
+    switch(randomType) {
+      case 0:
+        // Random total
+        usersData.map((userData) => {
+
+        });
+        break;
+      case 1:
+        // Au moins un par localisation
+        usersData.map((userData) => {
+
+        });
+        break;
+      case 2:
+        // Par localisation
+        usersData.map((userData) => {
+        
+        });
+        break;
+      default:
+
+    }
+
+   event.preventDefault();
   }
 
   render() {
@@ -77,7 +164,7 @@ class FormView extends React.Component{
             htmlFor="meetingName"
           >
             Nom de la rencontre
-            <input type="text" id="meetingName" placeholder="Ex: Rencontre 1" />
+            <input type="text" id="meetingName" name="meetingName" placeholder="Ex: Rencontre 1" required/>
           </StyledLabel>
           <StyledHr />
           {/* radio type de random */}
@@ -92,7 +179,7 @@ class FormView extends React.Component{
             <StyledLabel
               htmlFor="randomType2"
             >
-              <input type="radio" id="randomType2" name="randomType" value="1" />
+              <input type="radio" id="randomType2" name="randomType" value="1" checked/>
               Au moins un par localisation
             </StyledLabel>
             <StyledLabel
@@ -107,7 +194,7 @@ class FormView extends React.Component{
             htmlFor="numberMembersPerTeam"
           >
             Nombre de membres par équipe
-            <input type="number" id="numberMembersPerTeam" min="1" placeholder="Ex: 4" />
+            <input type="number" id="numberMembersPerTeam" name="numberMembersPerTeam" min="1" placeholder="Ex: 4" required/>
           </StyledLabel>
           <StyledHr />
           <StyledDetails>
