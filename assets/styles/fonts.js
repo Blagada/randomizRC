@@ -1,3 +1,3 @@
-export const textFontFamily = 'verdana, arial, sans-serif'
+export const textFontFamily = "Consolas, 'Courier New', monospace"
 
 export const titleFontFamily = "'Knewave', cursive"
