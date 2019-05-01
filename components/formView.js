@@ -115,39 +115,52 @@ class FormView extends React.Component{
     console.log('userQty', userQty);
     console.log('usersWithoutTeam', usersWithoutTeam);
     let teamDistribution = [];
-    let currTeamIndex = 1;
-    for (let i; i < userQty; i++) {
+    
+    var currTeamIndex = 1;
+
+    for (let i = 0; i < userQty; i++) {
       teamDistribution.push(currTeamIndex);
-      currTeamIndex++; 
+      currTeamIndex = currTeamIndex + 1; 
       if (currTeamIndex > numberOfTeams) {
         currTeamIndex = 1;
       }
+      console.log(userQty);
     }  
-    console.log(teamDistribution);
-    let randomizedUsers = [];
-    switch(randomType) {
-      case 0:
-        // Random total
-        usersData.map((userData) => {
 
+    let randomizedUsers = [];
+    console.log('randomType', randomType);
+
+    switch (randomType) {
+      case '0':
+        for (let i = teamDistribution.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [teamDistribution[i], teamDistribution[j]] = [teamDistribution[j], teamDistribution[i]];
+        }
+        usersData.map((userData, i) => {
+          randomizedUsers.push({
+            'name': userData.name,
+            'location': userData.location,
+            'team': teamDistribution[i],
+          });
         });
         break;
-      case 1:
+      case '1':
         // Au moins un par localisation
         usersData.map((userData) => {
 
         });
         break;
-      case 2:
+      case '2':
         // Par localisation
         usersData.map((userData) => {
         
         });
         break;
       default:
-
+      console.log('DEFAULT');
+        break;
     }
-
+    console.log(randomizedUsers);
    event.preventDefault();
   }
 
@@ -181,7 +194,7 @@ class FormView extends React.Component{
             <StyledLabel
               htmlFor="randomType2"
             >
-              <input type="radio" id="randomType2" name="randomType" value="1" checked/>
+              <input type="radio" id="randomType2" name="randomType" value="1" defaultChecked/>
               Au moins un par localisation
             </StyledLabel>
             <StyledLabel
