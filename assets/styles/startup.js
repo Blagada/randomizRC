@@ -6,6 +6,15 @@ export default () => (
       <style global jsx>{`
         @import url('https://fonts.googleapis.com/css?family=Knewave');
 
+        @font-face {
+          font-family: 'lazer84regular';
+          src: url('/static/fonts/lazer84-webfont.woff2') format('woff2'),
+               url('/static/fonts/Lazer84.ttf') format('ttf'),
+               url('/static/fonts/lazer84-webfont.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+      }
+
         body {
             background: ${backgroundColor};
             color: #fff;
