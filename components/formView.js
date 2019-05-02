@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import { StyledActionTag } from '../assets/styles/actionTag';
+import { randomizeArray, regularTeamDistribution } from '../assets/helpers';
 
 import Layout from '../components/layout';
 import List from '../components/List';
@@ -59,7 +60,6 @@ class FormView extends React.Component{
   }
 
   handleSubmit(event) {
-    console.log('SUBMITTING FORMS LIKE ITS 1995');
     const data = new FormData(event.target);
     let usersData = [];
     let randomType = "";
@@ -111,31 +111,13 @@ class FormView extends React.Component{
     const userQty = usersData.length;
     const numberOfTeams = Math.floor(userQty / numberMembersPerTeam);
     const usersWithoutTeam = Math.abs((numberOfTeams * numberMembersPerTeam) - userQty);
-    console.log('numberOfTeams', numberOfTeams);
-    console.log('userQty', userQty);
-    console.log('usersWithoutTeam', usersWithoutTeam);
-    let teamDistribution = [];
-    
-    var currTeamIndex = 1;
-
-    for (let i = 0; i < userQty; i++) {
-      teamDistribution.push(currTeamIndex);
-      currTeamIndex = currTeamIndex + 1; 
-      if (currTeamIndex > numberOfTeams) {
-        currTeamIndex = 1;
-      }
-      console.log(userQty);
-    }  
 
     let randomizedUsers = [];
-    console.log('randomType', randomType);
 
     switch (randomType) {
       case '0':
-        for (let i = teamDistribution.length - 1; i > 0; i--) {
-          let j = Math.floor(Math.random() * (i + 1));
-          [teamDistribution[i], teamDistribution[j]] = [teamDistribution[j], teamDistribution[i]];
-        }
+        let teamDistribution = regularTeamDistribution(userQty, numberOfTeams);
+        let randomized = randomizeArray(teamDistribution);
         usersData.map((userData, i) => {
           randomizedUsers.push({
             'name': userData.name,
@@ -157,7 +139,6 @@ class FormView extends React.Component{
         });
         break;
       default:
-      console.log('DEFAULT');
         break;
     }
     console.log(randomizedUsers);
