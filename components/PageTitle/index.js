@@ -14,7 +14,7 @@ const StyledTitle = styled.h1`
   transform: rotate(-10deg);
   text-transform: uppercase;
   /* Dégradé dans le titre de la page */
-  background: -webkit-linear-gradient(${txtForDarkBg}, ${secondaryColor});
+  background: linear-gradient(to right, ${txtForDarkBg} 0%, ${secondaryColor} 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /**/
