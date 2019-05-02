@@ -4,7 +4,6 @@ import { boxShadowColor } from '../../assets/styles/colors';
 import { locations } from '../../assets/helpers';
 
 const StyledEmployesItem = styled.label`
-  border-bottom: 1px solid ${boxShadowColor};
   display: flex;
   margin: 5px 0;
 

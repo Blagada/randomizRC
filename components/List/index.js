@@ -9,13 +9,19 @@ import { txtForDarkBg, textShadow, secondaryColor } from '../../assets/styles/co
 
 
 const StyledList = styled.ul`
+    ${({ withBg }) => (withBg ? 'background: linear-gradient(to right, rgba(255,255,255,.1) 0%,rgba(255,255,255,.04) 80%);' : '')}    
+    border-left: 2px solid ${secondaryColor};
     color: ${txtForDarkBg};
     margin: 0;
-    padding: 0 0 0 20px;
-    ${({ isEditable }) => (isEditable ? 'list-style: none;' : '')}
+    padding: 0;
 
     li {
-        list-style: square;
+        list-style: none;
+        padding-left: 10px;
+
+        &:nth-child(2n) {
+            ${({ withBg }) => (withBg ? 'background: linear-gradient(to right, rgba(255,255,255,.1) 0%,rgba(255,255,255,.04) 100%);' : '')}
+        }
     }
 
     a {
@@ -61,6 +67,7 @@ const List = ({
     isEmployes,
     maxItem,
     items,
+    withBg,
   }) => {
     if (!items) {
         return "Aucune liste n'est disponible pour le moment";
@@ -70,6 +77,7 @@ const List = ({
         <StyledList
             className={className}
             isEditable={isEditable}
+            withBg={withBg}
         >
             { /* .slice(0, maxItem) */ }
             {items.map((item, i) => (
@@ -109,6 +117,7 @@ const List = ({
 List.defaultProps = {
     maxItem: 5,
     isEmployes: false,
+    withBg: true,
 }
 
 export default List
