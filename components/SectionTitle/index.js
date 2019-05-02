@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { secondaryColor } from '../../assets/styles/colors';
+import { txtForDarkBg, textShadow } from '../../assets/styles/colors';
 
 
 const StyledSectionTitle = styled.h2`
-  color: ${secondaryColor};
+  color: ${txtForDarkBg};
   font-size: 16px;
   line-height: 1.3;
   margin-top: 40px;
+  text-shadow: ${textShadow};
 `;
 
 const SectionTitle = ({

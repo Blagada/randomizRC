@@ -4,21 +4,24 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import { txtForDarkBg, secondaryColor } from '../../assets/styles/colors';
+import { txtForDarkBg, textShadow, secondaryColor } from '../../assets/styles/colors';
 
 
 const StyledReturnHome = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.3;
-  text-transform: uppercase;
 
   a {
-    color: ${txtForDarkBg};
+      border-bottom: 1px solid ${txtForDarkBg};
+      color: ${txtForDarkBg};
+      text-decoration: none;
   }
 
   a:hover,
   a:focus {
-      color: ${secondaryColor};
+      border-bottom-color: ${secondaryColor};
+      border-bottom-style: dashed;
+      text-shadow: ${textShadow};
   }
 `;
 
