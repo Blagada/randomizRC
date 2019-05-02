@@ -7,8 +7,9 @@ const StyledTitle = styled.h1`
   color: ${txtForDarkBg};
   font-family: ${titleFontFamily};
   font-style: italic;
-  font-size: 15.5vw;
+  font-size: 12.5vw;
   line-height: 1.3;
+  padding-left: 2%;
   position: relative;
   transform: rotate(-10deg);
   text-transform: uppercase;
@@ -18,8 +19,8 @@ const StyledTitle = styled.h1`
   -webkit-text-fill-color: transparent;
   /**/
 
-  @media (min-width: 620px) {
-    font-size: 95px;
+  @media (min-width: 650px) {
+    font-size: 84px;
   }
 `;
 

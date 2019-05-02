@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import { StyledActionTag } from '../assets/styles/actionTag';
+import { textFontFamily } from '../assets/styles/fonts';
 
 import Layout from '../components/layout';
 import List from '../components/List';
@@ -11,6 +12,7 @@ import EmployesItem from './EmployesItem';
 const StyledForm = styled.form`
   input[type=text],
   input[type=number] {
+    font-family: ${textFontFamily};
     display: block;
     margin-top: 5px;
     padding: 4px;
@@ -174,6 +176,7 @@ class FormView extends React.Component{
         title="Créer une rencontre"
       >
         <StyledForm onSubmit={this.handleSubmit}>
+          <p>Attention, tous les champs du formulaire sont requis pour la création d'une rencontre.</p>
           {/* Nom */}
           <StyledLabel
             htmlFor="meetingName"
