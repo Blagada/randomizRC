@@ -154,7 +154,9 @@ class FormView extends React.Component{
         break;
     }
     console.log(randomizedUsers);
-
+      var body = {
+        values: randomizedUsers
+      };
       fetch(`https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw/values/${meetingName}`, {
         method: 'PUT',
         headers: {
@@ -162,7 +164,7 @@ class FormView extends React.Component{
           'content-type':'application/json',
           'Access-Control-Allow-Origin':'*',
         },
-        body: JSON.stringify(randomizedUsers[0])
+        body: JSON.stringify(body)
       }).then((res) => {
         res.status === 200 ? console.log('IT WORKED') : console.log(res);
       })
