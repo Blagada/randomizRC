@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import fetch from 'isomorphic-unfetch'
 
 import { StyledActionTag } from '../assets/styles/actionTag';
 import { textFontFamily } from '../assets/styles/fonts';
@@ -144,6 +145,20 @@ class FormView extends React.Component{
         break;
     }
     console.log(randomizedUsers);
+
+      fetch(`https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw/${meetingName}:batchUpdate`, {
+        method: 'post',
+        mode: 'no-cors',
+        headers: {
+          'Authorization': 'AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc',
+          'content-type':'application/json',
+          'Access-Control-Allow-Origin':'*',
+        },
+        body: JSON.stringify(randomizedUsers)
+      }).then((res) => {
+        res.status === 200 ? console.log('IT WORKED') : console.log(res);
+      })
+    
    event.preventDefault();
   }
 
