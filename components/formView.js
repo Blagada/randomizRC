@@ -168,12 +168,12 @@ class FormView extends React.Component{
         ]
       }
       console.log(body);
-      fetch(`https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw:batchUpdate?alt=json&key=AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc`, {
+      fetch(`https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw:batchUpdate`, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
-          'AUTHORIZATION': 'Token AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc',
-          'content-type':'application/json',
+          'Authorization': 'Bearer gxuGO3YIAASD2QPif4khRL33',
+          'Content-Type':'application/json',
           'Access-Control-Allow-Origin':'*',
         },
         body: JSON.stringify(body)
