@@ -26,6 +26,7 @@ function HomeView ({
           />
           <List
             items={spreadsheets}
+            withBg={false}
           />
         </>
       )}
