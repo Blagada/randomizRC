@@ -5,7 +5,7 @@ import EmployesItem from '../../components/EmployesItem';
 
 import { locations } from '../../assets/helpers';
 import { getIsActive } from '../../assets/helpers';
-import { txtForDarkBg, secondaryColor } from '../../assets/styles/colors';
+import { txtForDarkBg, textShadow, secondaryColor } from '../../assets/styles/colors';
 
 
 const StyledList = styled.ul`
@@ -14,13 +14,21 @@ const StyledList = styled.ul`
     padding: 0 0 0 20px;
     ${({ isEditable }) => (isEditable ? 'list-style: none;' : '')}
 
+    li {
+        list-style: square;
+    }
+
     a {
+        border-bottom: 1px solid ${txtForDarkBg};
         color: ${txtForDarkBg};
+        text-decoration: none;
     }
 
     a:hover,
     a:focus {
-        color: ${secondaryColor};
+        border-bottom-color: ${secondaryColor};
+        border-bottom-style: dashed;
+        text-shadow: ${textShadow};
     }
 `;
 

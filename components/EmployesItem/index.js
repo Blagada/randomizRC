@@ -1,21 +1,30 @@
 import styled from 'styled-components';
+import { textFontFamily } from '../../assets/styles/fonts';
 import { secondaryColor } from '../../assets/styles/colors';
 import { locations } from '../../assets/helpers';
 
 const StyledEmployesItem = styled.label`
   border-bottom: 1px solid ${secondaryColor};
   display: flex;
-  justify-content: flex-end;
   margin: 5px 0;
 
   input[type=checkbox] {
     align-self: center;
     margin: 2px 10px 0 0;
   }
+
+  select {
+    align-self: center;
+    font-family: ${textFontFamily};
+    margin-left: 10px;
+  }
 `;
 
-const StyledEmployesName = styled.span`
+const StyledEmployesName = styled.input`
+  font-family: ${textFontFamily};
   flex-grow: 1;
+  margin: 2px 0;
+  padding: 1px 4px;
 `;
 
 const EmployesItem = ({
@@ -36,7 +45,7 @@ const EmployesItem = ({
         type="checkbox"
         value={id}
     />
-    <input 
+    <StyledEmployesName 
       id={`textMember${id}`}
       name={`textMember${id}`}
       type="text"

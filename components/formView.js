@@ -4,22 +4,13 @@ import fetch from 'isomorphic-unfetch'
 
 import { StyledActionTag } from '../assets/styles/actionTag';
 import { textFontFamily } from '../assets/styles/fonts';
+import { textShadow } from '../assets/styles/colors';
 import { randomizeArray, regularTeamDistribution } from '../assets/helpers';
 
 import Layout from '../components/layout';
 import List from '../components/List';
-import ActionLink from './ActionLink';
-import EmployesItem from './EmployesItem';
 
 const StyledForm = styled.form`
-  input[type=text],
-  input[type=number] {
-    font-family: ${textFontFamily};
-    display: block;
-    margin-top: 5px;
-    padding: 4px;
-  }
-
   input[type=radio] {
     margin: 0 5px;
   }
@@ -31,6 +22,7 @@ const StyledForm = styled.form`
 
 const StyledLabel = styled.label`
   display: block;
+  text-shadow: ${textShadow};
 `;
 
 const StyledHr = styled.hr`
@@ -43,11 +35,28 @@ const StyledHr = styled.hr`
 const StyledFieldset = styled.fieldset`
   border-style: solid;
   border-width: 1px;
+  text-shadow: ${textShadow};
+
+  label {
+    text-shadow: none;
+  }
+`;
+
+const StyledInputField = styled.input`
+  font-family: ${textFontFamily};
+  display: block;
+  margin-top: 5px;
+  padding: 4px;
 `;
 
 const StyledDetails = styled.details`
   summary {
     cursor: pointer;
+    text-shadow: ${textShadow};
+
+    &:hover, &:focus {
+      text-shadow: none;
+    }
   }
 `;
 
@@ -177,7 +186,7 @@ class FormView extends React.Component{
             htmlFor="meetingName"
           >
             Nom de la rencontre
-            <input type="text" id="meetingName" name="meetingName" placeholder="Ex: Rencontre 1" required/>
+            <StyledInputField type="text" id="meetingName" name="meetingName" placeholder="Ex: Rencontre 1" required/>
           </StyledLabel>
           <StyledHr />
           {/* radio type de random */}
@@ -207,7 +216,7 @@ class FormView extends React.Component{
             htmlFor="numberMembersPerTeam"
           >
             Nombre de membres par équipe
-            <input type="number" id="numberMembersPerTeam" name="numberMembersPerTeam" min="1" placeholder="Ex: 4" required/>
+            <StyledInputField type="number" id="numberMembersPerTeam" name="numberMembersPerTeam" min="1" placeholder="Ex: 4" required/>
           </StyledLabel>
           <StyledHr />
           <StyledDetails>

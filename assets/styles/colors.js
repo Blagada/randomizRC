@@ -21,3 +21,4 @@ export function randomSecondaryColor() {
 };
 
 export const secondaryColor = randomSecondaryColor();
+export const textShadow = `0px 0px 10px ${secondaryColor}`;
