@@ -157,10 +157,20 @@ class FormView extends React.Component{
     }
     console.log(randomizedUsers);
       var body = {
-        values: randomizedUsers
-      };
-      fetch(`https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw/values/${meetingName}`, {
-        method: 'PUT',
+        "requests": [
+          {
+            "addSheet": {
+              "properties": {
+                "title": meetingName
+              }
+            }
+          }
+        ]
+      }
+      console.log(body);
+      fetch(`https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw:batchUpdate?alt=json&key=AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc`, {
+        method: 'POST',
+        mode: 'no-cors',
         headers: {
           'AUTHORIZATION': 'Token AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc',
           'content-type':'application/json',
