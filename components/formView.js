@@ -147,7 +147,7 @@ class FormView extends React.Component{
     console.log(randomizedUsers);
 
       fetch(`https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw/values/${meetingName}`, {
-        method: 'PUT ',
+        method: 'PUT',
         headers: {
           'AUTHORIZATION': 'Token AIzaSyAggofevpmIVp5sKCoD_Lkp2f-vaFfjICc',
           'content-type':'application/json',
