@@ -23,6 +23,10 @@ const StyledReturnHome = styled.div`
       border-bottom-style: dashed;
       text-shadow: ${textShadow};
   }
+
+  a:active {
+      color: ${secondaryColor};
+  }
 `;
 
 const ReturnHome = ({

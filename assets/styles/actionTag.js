@@ -5,6 +5,7 @@ import {
     boxShadowColor,
     secondaryColor,
     txtForLightBg,
+    txtForDarkBg,
 } from './colors';
 
 export const StyledActionTag = styled.div`
@@ -18,11 +19,18 @@ export const StyledActionTag = styled.div`
         font-weight: 600;
         padding: 5px;
         text-decoration: none;
+        text-shadow: 0px 0px 3px ${txtForDarkBg};
 
         &:hover,
         &:focus {
             box-shadow: 2px 2px ${boxShadowColor};
             transform: translate(2px, 2px);
+        }
+
+        &:active {
+            background: ${txtForDarkBg};
+            //color: ${txtForDarkBg};
+            text-shadow: 0px 0px 3px ${secondaryColor};
         }
     }
 

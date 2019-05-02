@@ -30,6 +30,10 @@ const StyledList = styled.ul`
         border-bottom-style: dashed;
         text-shadow: ${textShadow};
     }
+
+    a:active {
+        color: ${secondaryColor};
+    }
 `;
 
 const StyledLocationName = styled.span`

@@ -4,7 +4,7 @@ import fetch from 'isomorphic-unfetch'
 
 import { StyledActionTag } from '../assets/styles/actionTag';
 import { textFontFamily } from '../assets/styles/fonts';
-import { textShadow } from '../assets/styles/colors';
+import { textShadow, secondaryColor } from '../assets/styles/colors';
 import { randomizeArray, regularTeamDistribution } from '../assets/helpers';
 
 import Layout from '../components/layout';
@@ -28,11 +28,13 @@ const StyledLabel = styled.label`
 const StyledHr = styled.hr`
   border-bottom: 0;
   border-style: solid;
+  color: ${secondaryColor};
   display: block;
   margin: 20px 0;
 `;
 
 const StyledFieldset = styled.fieldset`
+  border-color: ${secondaryColor};
   border-style: solid;
   border-width: 1px;
   text-shadow: ${textShadow};
