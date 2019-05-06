@@ -19,6 +19,12 @@ const StyledTitle = styled.h1`
   -webkit-text-fill-color: transparent;
   /**/
 
+  &:before {
+    content: attr(data);
+    position: absolute;
+    speak: none;
+  }
+
   @media (min-width: 650px) {
     font-size: 84px;
   }
@@ -30,6 +36,7 @@ const PageTitle = ({
   }) => (
     <StyledTitle
         className={className}
+        data={title}
     >
       {title}
     </StyledTitle>
