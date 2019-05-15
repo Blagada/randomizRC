@@ -167,7 +167,6 @@ class FormView extends React.Component{
           }
         ]
       }
-      console.log(body);
       fetch(`https://sheets.googleapis.com/v4/spreadsheets/1m0ZHw-FEsStTTUmObOT5PjCUfvfbL8l1IRfiubfwJvw:batchUpdate`, {
         method: 'POST',
         mode: 'no-cors',
